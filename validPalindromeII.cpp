@@ -3,32 +3,29 @@
  */
  #include <string>
 
-using names space std;
+using namespace std;
     
-    bool isPal(string& s, int l, int r) {
-        while (l < r) {
-            if (s[l] != s[r]) {
-                return false;
-            }
-            l++;
-            r--;
-        }
-        return true;
-    }
-
-
-    bool validPalindrome(string s) {
+   bool validPalindrome(string s) {
         int left = 0;
         int right = s.length() - 1;
 
         while (left < right) {
-            if (s[left] = s[right]) {
+            if (s[left] != s[right]) {
              
-                return isPalindrome(s, left + 1, right-1) ;
+                if(s[left+ 1] != s[right])||(s[left] != s[right+1]){
+                    return true;
             }
             left++;
             right--;
+
         }
         return true;
+   
+            
+            left++;
+            right--;
+        }
+      return true;
+    
     }
 

@@ -3,33 +3,51 @@ using namespace std;
 
 int main(){
     string s;
-     cin >> s;
-     stack<char> stac;
-     bool valid = true;
+    cin >> s;
+    stack<char> stac;
+    bool valid = true;
 
-     if(s.size()%2 == 1){
+    if(s.size()%2 == 1){
         valid = false;
         return 0;
-     }else{
-     for(int i = 0; i< (s.size()/2); i++){
+    }else{
+    for(int i = 0; i< (s.size()/2); i++){
         if(s[i] == '(' || s[i] == '{' || s[i] == '['){
             stac.push(s[i]);
         }
-         else{
-            if(stac.empty()){
-                valid = false;
-                 return 0;
-             }
+        else{
+            valid = false;
+                break;
             }
         }
-             if(stac.top() !== s[s.size()/2]){
-                valid = false;
-                 return 0;
-             }
-             else{
-                stac.pop();
-                if(stac.top() ==)
-             }
-            
-     }
+
+        if (valid) {
+            for (int i = s.size() / 2; i < s.size(); i++) {
+                if (stac.empty()) {
+                    valid = false;
+                    break;
+                }
+                
+                // Check if stac.top() matches the closing bracket s[i]
+                if ((stac.top() == '(' && s[i] == ')') ||
+                    (stac.top() == '{' && s[i] == '}') ||
+                    (stac.top() == '[' && s[i] == ']')) {
+                    stac.pop();
+                } else {
+                    valid = false;
+                    break;
+                }
+
+                    }
+        }
     }
+
+  
+    if (valid && stac.empty()) {
+        cout << "true" << endl;
+    } else {
+        cout << "false" << endl;
+    }
+
+    return 0;
+}

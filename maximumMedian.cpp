@@ -1,28 +1,28 @@
 #include <bits/stdc++.h>
 #include <vector>
 using namespace std;
- 
+
 bool check_mid(long long mid, int n, long long k, vector<int>&in9){
 long long operations_needed = 0;
- 
+
 for ( long long i = n/2;i<n;i++){
     if(in9[i]<mid){
         operations_needed += (mid - in9[i]);
     }
-                    
+
 }
- if(operations_needed <=k){
+if(operations_needed <=k){
         return true;
     }else{ return false;
-         }
- 
+        }
+
     return true;}
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     // Write C++ code here
     
-   int n,k;
+    int n,k;
     cin>>n>>k;
         
     vector<int>in9(n);
@@ -35,18 +35,18 @@ int main() {
     long long high = in9[n-1] + k;
     long long ans = low;
     while(low <= high){
-       long long mid = (low + high)/2;
+        long long mid = (low + high)/2;
         check_mid(mid, n, k, in9);
         if(check_mid(mid, n, k, in9) == true){
-           low = mid + 1; 
-           ans  = mid;
+            low = mid + 1; 
+            ans  = mid;
     }
-   
-     else{
+    
+    else{
             high = mid - 1;
         }
         
     }
-   cout <<ans<<endl;
+    cout <<ans<<endl;
     return 0;
 }

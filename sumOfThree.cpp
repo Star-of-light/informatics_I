@@ -5,25 +5,29 @@ int main() {
 
    int n,x;
    cin>>n>>x;
-    vector<int>inte(n);
-    for(int i =  0; i<n;i++ ){
-        cin>>inte[i];
+
+     vector<pair<int, int>> inte(n);
+   
+    for (int i = 0; i < n; i++) {
+        
+        cin >> inte[i].first;
+
+        inte[i].second = i + 1;
     }
-    sort(inte.begin(), inte.end());
+     sort(inte.begin(), inte.end());
     
-    // int l = inte[0];
-    // int r = inte[n - 1];
+    
     
     for (int l = 0; l <=n - 3; l++) {
         
         int m = l + 1; 
-        int r= inte[n-1];  
+        int r= n-1;  
         
         while ( m < r) {
-            int current_sum = inte[l] + inte[l] + inte[r];
+            long long current_sum = inte[l] + inte[m] + inte[r];
             
             if (current_sum == x) {
-                cout  << l<< " " << m << " " << r << inte[l] << inte[m] <<inte[r]<<endl;
+                cout << inte[l].second << " " << inte[m].second << " " << inte[r].second << endl;
                 return 0;
             } 
             else if (current_sum < x) {
@@ -33,8 +37,7 @@ int main() {
                 r--; 
         }
     }
-    
+}   
     cout << "IMPOSSIBLE"<< endl;
     return 0;
 }
- }

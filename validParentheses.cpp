@@ -27,9 +27,7 @@ int main(){
                     valid = false;
                     break;
                 }
-                
-                // Check if stac.top() matches the closing bracket s[i]
-                if ((stac.top() == '(' && s[i] == ')') ||
+        if ((stac.top() == '(' && s[i] == ')') ||
                     (stac.top() == '{' && s[i] == '}') ||
                     (stac.top() == '[' && s[i] == ']')) {
                     stac.pop();
